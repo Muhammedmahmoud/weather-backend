@@ -1,19 +1,19 @@
 FROM node:14
 
 # Create app directory
-RUN mkdir -p /var/www/app
-WORKDIR /var/www/app
+WORKDIR /usr/src/app
 
-# Add our package.json and install *before* adding our application files
-ADD package.json ./
-RUN npm i --production
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-# Install pm2 *globally* so we can run our application
-RUN npm i -g pm2
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
 
-# Add application files
-ADD app /var/www/app
+# Bundle app source
+COPY . .
 
 EXPOSE 3000
-
-CMD ["pm2", "start", "process.json", "--no-daemon"]
+CMD [ "node", "app.js" ]
