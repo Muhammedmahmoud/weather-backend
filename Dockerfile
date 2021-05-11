@@ -5,7 +5,7 @@ RUN mkdir -p /var/www/app
 WORKDIR /var/www/app
 
 # Add our package.json and install *before* adding our application files
-ADD app/package.json ./
+ADD package.json ./
 RUN npm i --production
 
 # Install pm2 *globally* so we can run our application
