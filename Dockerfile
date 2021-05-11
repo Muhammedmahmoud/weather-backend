@@ -12,7 +12,7 @@ RUN npm i --production
 RUN npm i -g pm2
 
 # Add application files
-ADD /var/www/app
+ADD app /var/www/app
 
 EXPOSE 3000
 
