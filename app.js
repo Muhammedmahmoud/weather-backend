@@ -4,7 +4,7 @@ const http = require("http");
 const app = express()
 const server = http.createServer(app);
 
-const port = process.env.PORT || 3000
+const { PORT = 4000, SALT = '#ha43-1', LOG_LEVEL, NODE_ENV } = process.env;
 
 const io = require('socket.io')(server, {
     cors: {
@@ -27,8 +27,8 @@ io.on('connection', (socket) => {
 })
 
 
-server.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+server.listen(PORT, () => {
+    console.log(`Example app listening at http://localhost:${PORT}`)
 })
 
 app.get('/', (req, res) => {
