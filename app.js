@@ -4,7 +4,7 @@ const http = require("http");
 const app = express()
 const server = http.createServer(app);
 
-const { PORT = 4000, SALT = '#ha43-1', LOG_LEVEL, NODE_ENV } = process.env;
+const { PORT = 3000, SALT = '#ha43-1', LOG_LEVEL, NODE_ENV } = process.env;
 
 const io = require('socket.io')(server, {
     cors: {
