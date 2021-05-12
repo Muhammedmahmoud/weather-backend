@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app-deployment
+  name: weather-app-deployment
 spec:
   selector:
     matchLabels:
-      app: my-app
+      app: weather-app
   replicas: 1
   template:
     metadata:
       labels:
-        app: my-app
+        app: weather-app
         env: development
     spec:
       containers:
-      - name: my-app
-        image: gcr.io/secure-current-313023/app:v1
+      - name: weather-app
+        image: gcr.io/secure-current-313023/weather-app:v1
         ports:
         - containerPort: 3000
         env:
@@ -37,4 +37,4 @@ spec:
     targetPort: 3000
     protocol: TCP
   selector:
-    app: my-app
+    app: weather-app
